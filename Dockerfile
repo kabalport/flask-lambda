@@ -7,9 +7,8 @@ WORKDIR /app
 # 현재 디렉토리의 파일들을 컨테이너 내의 /app 디렉토리로 복사
 COPY . /app
 
-# Flask 앱 실행을 위한 Gunicorn 설치
-RUN pip install gunicorn
+# 필요한 Python 패키지들을 설치
+RUN pip install -r requirements.txt
 
-# Gunicorn을 사용하여 Flask 앱 실행
+# 컨테이너가 시작될 때 실행될 명령어 정의
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
-
